@@ -1,0 +1,2 @@
+class Enthusiast < ApplicationRecord
+end
