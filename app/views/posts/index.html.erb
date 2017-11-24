@@ -2,7 +2,7 @@
 
 
 <% unless @posts.nil? %> 
-  <% @posts.each do |p| %>
+  <% @posts.reverse.each do |p| %>
     <b><%= p.name %> <br></b>
     <%= p.email %> <br>
     <%= p.text %> <br><br>
