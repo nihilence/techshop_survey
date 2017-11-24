@@ -1,3 +1,24 @@
 // Place all the styles related to the landing_page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-header {
+    min-height: calc(10vw - 5px);
+}
+.gear {
+    background: blue;
+    height: 10vw;
+    width: 10vw;
+    position: fixed;
+    top: -10px;
+    left: -30px;
+    background-image: url(/techshop_gear.jpg);
+    background-position: bottom right;
+    background-size: 200px;
+}
+.gear.two {
+    left: calc(90vw + 5px);
+    top: -5px;
+    background-image: url(/techshop_gear.jpg);
+    background-position: bottom left;
+}
