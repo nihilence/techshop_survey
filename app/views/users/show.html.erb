@@ -1,0 +1,24 @@
+<h4> User Information </h4>
+<label>Name:</label> <%= @user.name.capitalize %> <br>
+<label>Email:</label> <%= @user.email %> <br>
+<label>Monthly Contribution:</label>
+<% if @user.monthly_contribution < 100 %>
+   Less than $100
+<% else %>
+   $<%= @user.monthly_contribution %>
+<% end %>
+<br>
+<label>Willing to pay months in advance:</label> <%= @user.months_in_advance %> <br>
+<label>Willing to donate for startup:</label> <%= @user.funding_donation %> <br>
+<label>Expectations for donating:</label> <%= @user.funding_details %> <br>
+
+
+<h4> Your Gear </h4>
+<% @owned_equipment.each do |e| %>
+    <%= e.name %><br>
+<% end %>
+
+<h4> Desired Gear </h4>
+<% @desired_equipment.each do |e| %>
+    <%= e.name %><br>
+<% end %>

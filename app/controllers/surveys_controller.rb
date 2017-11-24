@@ -27,6 +27,6 @@ class SurveysController < ApplicationController
       end
     end
 
-    render json: params
+    redirect_to controller: 'users', action: 'show', id: user.id
   end
 end
