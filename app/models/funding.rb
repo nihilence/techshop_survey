@@ -1,2 +1,0 @@
-class Funding < ApplicationRecord
-end

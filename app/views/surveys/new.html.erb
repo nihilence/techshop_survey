@@ -1,0 +1,6 @@
+<% @categories.to_a.each do |category| %>
+  <b> <%= category.name.capitalize %></b><br>
+      <% category.equipments.each do |equip| %>
+          <%= equip.name %> <br>
+      <% end %>
+<% end %>

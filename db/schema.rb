@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123002300) do
+ActiveRecord::Schema.define(version: 20171124005933) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enthusiast_equipments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "equipment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,11 +33,14 @@ ActiveRecord::Schema.define(version: 20171123002300) do
 
   create_table "equipment", force: :cascade do |t|
     t.integer "category_id", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "fundings", force: :cascade do |t|
+  create_table "owner_equipments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "equipment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,9 +52,9 @@ ActiveRecord::Schema.define(version: 20171123002300) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.text "text"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,6 +62,10 @@ ActiveRecord::Schema.define(version: 20171123002300) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
+    t.integer "monthly_contribution"
+    t.integer "months_in_advance", default: 1
+    t.integer "funding_donation"
+    t.text "funding_details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
