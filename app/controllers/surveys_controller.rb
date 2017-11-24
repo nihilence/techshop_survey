@@ -6,10 +6,16 @@ class SurveysController < ApplicationController
   end
 
   def create
+    if params[:user][:monthly_contribution] == 'other'
+       monthly_contribution = params[:user][:other_contribution]
+    else
+      monthly_contribution = params[:user][:monthly_contribution]
+    end
+
     user = User.create(
       name: params[:user][:name],
       email: params[:user][:email],
-      monthly_contribution: params[:user][:monthly_contribution],
+      monthly_contribution: monthly_contribution,
       months_in_advance: params[:user][:months_in_advance],
       funding_details: params[:user][:funding_details],
       funding_donation: params[:user][:funding_donation]
