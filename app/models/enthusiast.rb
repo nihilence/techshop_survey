@@ -1,2 +1,0 @@
-class Enthusiast < ApplicationRecord
-end
