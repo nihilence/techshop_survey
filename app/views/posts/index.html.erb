@@ -1,6 +1,6 @@
-<h1>Submit Post</h1>
+<div class="top-spacer"></div>
 
-
+<div class="posts">
 <% unless @posts.nil? %> 
   <% @posts.reverse.each do |p| %>
     <b><%= p.name %> <br></b>
@@ -8,8 +8,10 @@
     <%= p.text %> <br><br>
   <% end %>
 <% end %>
+</div>
 
 <%= form_with scope: :post, url: posts_path  do |form| %>
+  <h2>Submit Post</h2>
  
   <p>
     <%= form.label :name %><br>
