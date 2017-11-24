@@ -1,3 +1,46 @@
 // Place all the styles related to the landing_page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    background-color: rgb(245,245,245);
+}
+.landing-page-text {
+    left: 10%;
+    max-width: 80%;
+    position: relative;
+    font-size: x-large;
+}
+.landing-page-links * {
+    display: block;
+}
+.landing-page-links {
+    margin-top: 8vh;
+    text-align: center;
+    font-size: x-large;
+}
+.gear {
+    background: blue;
+    height: 14vw;
+    width: 14vw;
+    position: fixed;
+    top: -10px;
+    left: -30px;
+    background-image: url(/techshop_gear.jpg);
+    background-position: bottom right;
+    background-size: 20vw;
+    background-repeat: no-repeat;
+}
+.gear.two {
+    left: calc(90vw + 5px);
+    top: -5px;
+    background-image: url(/techshop_gear.jpg);
+    background-position: bottom left;
+}
+@media screen and (min-width: 1024px) {
+    .gear {
+        height: 12vw;
+        widht: 12vw;
+    }
+}
+

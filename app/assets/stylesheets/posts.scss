@@ -1,3 +1,21 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+form {
+  position: absolute;
+  top: 16vw;
+  right: 5%;
+}
+.posts {
+  // margin-left: 10%;
+  // margin-top: 16vw;
+  left: 5vw;
+  top: 17vw;
+  position: absolute;
+}
+
+h1 {
+  text-align: center;
+}

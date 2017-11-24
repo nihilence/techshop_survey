@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+.top-spacer {
+    min-height: 12vw;
+}
+.main-header {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
