@@ -52,10 +52,16 @@ ActiveRecord::Schema.define(version: 20171124005933) do
     t.string "email", null: false
     t.integer "monthly_contribution"
     t.integer "months_in_advance", default: 1
-    t.integer "funding_donation"
-    t.text "funding_details"
+    t.integer "upfront_contribution"
+    t.text "desired_location"
+    t.text "ideas"
+    t.text "skills"
+    t.text "classes_taught"
+    t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["token"], name: "index_users_on_token", unique: true
   end
 
 end

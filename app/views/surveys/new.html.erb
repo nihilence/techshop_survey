@@ -1,10 +1,5 @@
 <div class="top-spacer"></div>
-<!-- <% @categories.to_a.each do |category| %>
-  <b> <%= category.name.capitalize %></b><br>
-      <% category.equipments.each do |equip| %>
-          <%= equip.name %> <br>
-      <% end %>
-<% end %> -->
+
 
 <script>
   function checkvalue(val) {
@@ -14,17 +9,23 @@
 </script>
 <form accept-charset="UTF-8" action="/surveys" method="post" class="survey_form">
   <label for="user_name">Name</label>
-  <input id="user_name" name="user[name]" type="text" /> <br>
+  <input id="user_name" name="user[name]" type="text" value="<%= @user.name %>"/> <br>
   <label for="user_email">Email</label>
-  <input id="user_email" name="user[email]" /><br>
+  <input id="user_email" name="user[email]" value="<%= @user.email %>"/><br>
 
   <label for="user_monthly_contribution">   What amount would you be willing to pay per month as a member, knowing that you will get a better shop and experience as the number gets higher?</label><br>
+    <% mnc = @user.monthly_contribution || 150 %>
+    <%= mnc == 150 %>
   <select name="user[monthly_contribution]" id="user_monthly_contribution" onchange='checkvalue(this.value)'>
     <option value="50">Less than $100/Month</option>
-    <option value="100">$100/Month</option>
-    <option value="150">$150/Month</option>
-    <option value="200">$200/Month</option>
-    <optionvalue="250">$250/Month</option>
+    <option value="100" >$100/Month</option>
+    <option value="125" >$125/Month</option>
+    <option value="150" >$150/Month</option>
+    <option value="300" >$300/Month</option>
+    <option value="500" >$500/Month</option>
+    <option value="750" >$750/Month</option>
+    <option value="1000" >$1000/Month</option>
+    <option value="2500" >$2500/Month</option>
     <option value="other">Other</option>
   </select>
   <div id="other_contribution" name="other_contribution" style="display:none;">
@@ -59,11 +60,6 @@
   <label for="user_months_in_advance">How many months in advance would you be willing to pay?</label>
   <input id="user_months_in_advance" name="user[months_in_advance]" /><br>
 
-  <label for="user_funding_donation">Would you be willing to donate funds to create the space? If so, how much?</label>
-  <input id="user_funding_donation" name="user[funding_donation]" /><br>
-
-  <label for="user_funding_details">What would you like in return for donating to create the space?</label>
-  <input id="user_funding_details" name="user[funding_details]" /><br>
 </div>
   <input name="commit" type="submit" value="Submit" />
 </form

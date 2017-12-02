@@ -3,6 +3,8 @@ class SurveysController < ApplicationController
 
   def new
     @categories = Category.all
+    user = User.find_by_token(cookies[:token])
+    @user = user.nil? ?  User.new(id: nil) : user
   end
 
   def create
@@ -11,15 +13,25 @@ class SurveysController < ApplicationController
     else
       monthly_contribution = params[:user][:monthly_contribution]
     end
+    @user = User.find_by_token(cookies[:token]) || User.find_by_email(params[:user][:email])
 
-    user = User.create(
-      name: params[:user][:name],
-      email: params[:user][:email],
-      monthly_contribution: monthly_contribution,
-      months_in_advance: params[:user][:months_in_advance],
-      funding_details: params[:user][:funding_details],
-      funding_donation: params[:user][:funding_donation]
-    )
+    if @user.nil?
+      user = User.create(
+        name: params[:user][:name],
+        email: params[:user][:email],
+        monthly_contribution: monthly_contribution,
+        months_in_advance: params[:user][:months_in_advance],
+        upfront_contribution: params[:user][:upfront_contribution],
+        desired_location: params[:user][:desired_location],
+        ideas: params[:user][:ideas],
+        skills: params[:user][:skills],
+        classes_taught: params[:user][:classes_taught]
+      )
+    else
+      user = @user
+    end
+
+    cookies[:token] = user.reload.token
 
     unless params[:wanted_equipment].nil?
       params[:wanted_equipment].each do |id|
@@ -32,7 +44,6 @@ class SurveysController < ApplicationController
           OwnerEquipment.create!(user_id: user.id, equipment_id: id)
       end
     end
-
     redirect_to controller: 'users', action: 'show', id: user.id
   end
 end

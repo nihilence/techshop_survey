@@ -9,15 +9,13 @@
 category_list = [
   'Woodshop',
   'Metalshop',
-  'Hotshop',
+  'Hotshop -> Hotshop (welding)',
+  'Plasticshop',
+  'Autobay -> Autoshop',
   'Lasers',
-  'Soft Shop',
-  'Autobay',
   'Electronics',
-  'Hardshop',
-  'Computers',
-  'Software',
-  'Misc'
+  'Soft shop -> Softshop (textiles & printers)',
+  'Misc -> General Facilities'
 ]
 
 category_list.each do |name|
@@ -25,18 +23,16 @@ category_list.each do |name|
 end
 
 woodshop_equipment = [
-     'Shopbot (Desk)',
-     'Shopbot Buddy',
-     'Shopbot Alpha',
-     'Shopbot Any',
-     'Planer',
-     'Joiner',
-     'Table Router',
-     'Table Saw',
-     'Angular Saw',
-     'Wood Lathe',
-     'Panel Saw',
-     'Oscillating Sander'
+  'CNC Wood Lathe',
+  'Table Saw -> Table Saw, Sawstop',
+  'Belt Sander',
+  'Disk Sander',
+  'Drum Sander',
+  'Jig Saw',
+  'Dust Collectors',
+  'Band Saw',
+  'Drill Press, Wood',
+  'Nailgun'
 ]
 
 woodshop_id = Category.find_by_name('Woodshop').id
@@ -45,10 +41,15 @@ woodshop_equipment.each do |name|
 end
 
 metalshop_equipment = [
-       'Plasma Cutter',
-       'Tormach CNC Mill',
-       'Manual Mill',
-       'Metal Lathe'
+  'Anvil',
+  '10-ton Press',
+  'Powdercoating Booth',
+  'Powdercoating Oven',
+  'Crucible',
+  'Tormach 4th Axis',
+  'Metal Crimper',
+  'Granite Surface Plate',
+  'Drill Press, Metal'
 ]
 
 metalshop_id = Category.find_by_name('Metalshop').id
@@ -56,23 +57,31 @@ metalshop_equipment.each do |name|
   Equipment.create!(category_id: metalshop_id, name: name)
 end
 
-hotshop_equipment = [
-     'TIG Welding',
-     'MIG Welding',
-     'Arc Welding',
-     'Oxy-Acetalyne'
+plasticshop_equipment = [
+      'Vaccum Former',
+      'Injection Molder',
+      'Strip Heater',
+      'Pressure Pot',
+      'Resins & Chem Supplies'
 ]
 
-hotshop_id = Category.find_by_name('Hotshop').id
-hotshop_equipment.each do |name|
-  Equipment.create!(category_id: hotshop_id, name: name)
+plasticshop_id = Category.find_by_name('Plasticshop').id
+plasticshop_equipment.each do |name|
+  Equipment.create!(category_id: plasticshop_id, name: name)
 end
 
+
 laser_equipment = [
-      'ULS',
-      'Epilog',
-      'Trotec',
-      'Misc'
+  'Fiber Laser',
+  'Laser Cutter, 45 Watt Epilog',
+  'Laser Cutter, 60 Watt Epilog',
+  'Laser Cutter, 120 Watt Epilog',
+  'Rotary Attachment, Epilog',
+  'Laser Cutter, 60 Watt ULS ( Universal Laser Systems )',
+  'Rotary Attachment, Universal',
+  'Trotec -> Laser Cutter, Trotec',
+  'Laser Cutter, Any Epilog',
+  'Misc -> Any Laser'
 ]
 
 laser_id = Category.find_by_name('Lasers').id
@@ -81,30 +90,34 @@ laser_equipment.each do |name|
 end
 
 softshop_equipment = [
-  'Walking Foot Industrial Sewing Machine',
-  'CNC Embroiderer',
-  'Vinly Cutter'
+  'Soft shop -> Softshop (textiles & printers)',
+  '3D Printer, Formlabs Form 2 SLA',
+  '3D Printer, Makerbot Replicator 2',
+  '3D Printer, Any',
+  'Printer, Large High Quality Print',
+  'Printer, Any',
+  'Sewing Machine, Brother',
+  'Sewing Machine, Any',
+  'Heat Press'
 ]
 
-softshop_id = Category.find_by_name('Soft Shop').id
+softshop_id = Category.find_by_name('Soft shop -> Softshop (textiles & printers)').id
 softshop_equipment.each do |name|
   Equipment.create!(category_id: softshop_id, name: name)
 end
 
 autobay_equipment = [
-  'Auto Lift'
+  'Autobay'
 ]
 
-autobay_id = Category.find_by_name('Autobay').id
+autobay_id = Category.find_by_name('Autobay -> Autoshop').id
 autobay_equipment.each do |name|
   Equipment.create!(category_id: autobay_id, name: name)
 end
 
 electronics_equipment = [
-      'Othermill',
-      'Ossiliscope, digital',
-      'Ossiliscope, analog',
-      'myDaq'
+  'Power Supply',
+  'Soldering Supplies'
 ]
 
 electronics_id = Category.find_by_name('Electronics').id
@@ -113,41 +126,22 @@ electronics_equipment.each do |name|
 end
 
 
-hardshop_equipment = [
-    'Injection Molder',
-    'Powder Coating Booth',
-    'Vacuum Former',
-    'Waterjet'
-]
-
-hardshop_id = Category.find_by_name('Hardshop').id
-hardshop_equipment.each do |name|
-  Equipment.create!(category_id: hardshop_id, name: name)
-end
-
-software_equipment = [
-   'Adobe Illustrator',
-   'CorelDraw',
-   'VCarve',
-   'Adobe Photoshop'
-]
-
-software_id = Category.find_by_name('Software').id
-software_equipment.each do |name|
-  Equipment.create!(category_id: software_id, name: name)
-end
 
 misc_equipment = [
-  'Bin Wall',
-  'Address For Deliveries',
-  'Coffee',
-  'Popcorn',
-  'Compressed Air System',
-  'Work Tables',
-  'Access to other members'
+  'Waterjet',
+  'Vices',
+  'Digital Calipers',
+  'Drill Bits',
+  'Refrigerator Access',
+  'A Parking Spot',
+  'Public Transit Access, Near Station',
+  'Public Transit Access, Walking Access',
+  'Other members, inspiration',
+  'Other members, jobs',
+  'Other members, social'
 ]
 
-misc_id = Category.find_by_name('Misc').id
+misc_id = Category.find_by_name('Misc -> General Facilities').id
 misc_equipment.each do |name|
   Equipment.create!(category_id: misc_id, name: name)
 end
